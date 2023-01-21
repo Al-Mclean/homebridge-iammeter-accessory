@@ -32,8 +32,8 @@ edit your Homebridge's config.json to include the following in the accessories s
         {
             "accessory": "Meter",
             "name": "Meter",
-            "ip": "192.168.1.123",
-            "pollInterval": 30,
+            "ip": "192.168.1.177",
+            "pollInterval": 120,
             "onThreashold": -1000,
             "offThreashold": 0
         }
