@@ -29,6 +29,7 @@ npm install
 
 edit your Homebridge's config.json to include the following in the accessories section:
 
+```json
 "accessories": [
         {
             "accessory": "Meter",
@@ -39,6 +40,7 @@ edit your Homebridge's config.json to include the following in the accessories s
             "offThreashold": 0
         }
 ]
+```
 
 * "name"              			The Homekit Accessory Name.
 
