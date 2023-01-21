@@ -1,6 +1,6 @@
 {
   "name": "homebridge-iammeter-accessory",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "An iammeter accessory plugin for homebridge written in Typescript",
   "main": "dist/accessory.js",
   "scripts": {

@@ -46,8 +46,11 @@ class Meter implements AccessoryPlugin {                                        
     console.log('On Threashold: ', this.onThreashold);
     this.offThreashold = config.offThreashold;
     console.log('Off Threashold: ', this.offThreashold);
+    // Config error checking
     
     
+
+
     this.switchService = new hap.Service.Switch(this.name);
 
     this.switchService.getCharacteristic(hap.Characteristic.On)
@@ -94,7 +97,7 @@ class Meter implements AccessoryPlugin {                                        
           console.log('Error: ', error);
         },
       );
-    }, this.pollInterval);    
+    }, this.pollInterval * 1000);    
 
   }                                                                                      // End Class Constructor
 
