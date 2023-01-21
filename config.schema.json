@@ -1,0 +1,38 @@
+{
+  "pluginAlias": "homebridge-iammeter-accessory",
+  "pluginType": "accessory",
+  "singular": true,
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "title": "Name",
+        "type": "string",
+        "required": true,
+        "default": "IAMMeter"
+      },
+      "meters": {
+        "type": "array",
+        "items": {
+          "title": "Meters",
+          "type": "object",
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "required": true,
+              "description": "Set the meter name for display in the Home app."
+            },
+            "ip": {
+              "title": "IP Address",
+              "type": "string",
+              "default": "127.0.0.1",
+              "required": true,
+              "format": "ipv4"
+            } 
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,16 +1,17 @@
 {
-  "name": "homebridge-accessory-example",
-  "version": "1.0.0",
-  "description": "An example accessory plugin for homebridge written in Typescript",
+  "name": "homebridge-iammeter-accessory",
+  "version": "0.0.1",
+  "description": "An iammeter accessory plugin for homebridge written in Typescript",
   "main": "dist/accessory.js",
   "scripts": {
+    "lint": "eslint src/**.ts --max-warnings=0",
     "clean": "rimraf ./dist",
     "build": "rimraf ./dist && tsc",
     "prepublishOnly": "npm run build",
     "postpublish": "npm run clean",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Andreas Bauer <mail@anderl-bauer.de>",
+  "author": "al McLean",
   "engines": {
     "homebridge": ">=1.0.0"
   },
@@ -24,10 +25,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/homebridge/homebridge-examples.git"
+    "url": "https://github.com/Al-Mclean/homebridge-iammeter-accessory.git"
   },
   "bugs": {
-    "url": "http://github.com/homebridge/homebridge-examples/issues"
+    "url": "https://github.com/Al-Mclean/homebridge-iammeter-accessory/issues"
   },
   "devDependencies": {
     "@types/node": "10.17.19",

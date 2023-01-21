@@ -9,14 +9,14 @@
       "ES2018"
     ],
     "sourceMap": true,
-    "rootDir": "src",
-    "outDir": "dist",
+    "rootDir": "./src",
+    "outDir": "./dist",
 
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true
   },
   "include": [
-    "src"
+    "./src"
   ]
 }
