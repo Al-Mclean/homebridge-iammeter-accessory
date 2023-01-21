@@ -1,6 +1,6 @@
 {
   "name": "homebridge-iammeter-accessory",
-  "version": "0.0.1",
+  "version": "0.0.7",
   "description": "An iammeter accessory plugin for homebridge written in Typescript",
   "main": "dist/accessory.js",
   "scripts": {
@@ -32,8 +32,12 @@
   },
   "devDependencies": {
     "@types/node": "10.17.19",
-    "typescript": "^3.8.3",
+    "homebridge": "^1.0.4",
     "rimraf": "^3.0.2",
-    "homebridge": "^1.0.4"
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "@types/node-fetch": "^2.6.2",
+    "node-fetch": "2.6.6"
   }
 }

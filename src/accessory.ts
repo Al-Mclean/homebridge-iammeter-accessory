@@ -10,6 +10,8 @@ import {
   Logging,
   Service
 } from 'homebridge';
+import fetch from 'node-fetch';
+
 
 let hap: HAP;
 
@@ -26,13 +28,20 @@ class Meter implements AccessoryPlugin {                                        
 
   private readonly switchService: Service;
   private readonly informationService: Service;
+  ip: any;
+  
 
   constructor(log: Logging, config: AccessoryConfig, api: API) {                      // Class Constructor
     this.log = log;
     this.name = config.name;
+    console.log('Name: ', this.name);
+
+    this.ip = config.ip;
+    console.log('IP address: ', this.ip);
+
 
     this.switchService = new hap.Service.Switch(this.name);
-    
+
     this.switchService.getCharacteristic(hap.Characteristic.On)
       .on(CharacteristicEventTypes.GET, (callback: CharacteristicGetCallback) => {
         log.info("Current state of the switch was returned: " + (this.switchOn? "ON": "OFF"));
@@ -49,6 +58,36 @@ class Meter implements AccessoryPlugin {                                        
       .setCharacteristic(hap.Characteristic.Model, "Custom Model");
 
     log.info("Switch finished initializing!");
+
+      
+    setInterval(() => {
+      console.log('Request Energy Meter Data');
+      this.meterGet().then(
+        (value) => {
+          //console.log('Result: ', value);
+          console.log('');
+          console.log('Accessory Voltage:', value.Data[0]);
+          console.log('Current:', value.Data[1]);
+          console.log('Active Power:', value.Data[2]);
+          console.log('Import Power:', value.Data[3]);
+          console.log('Export Power:', value.Data[4]);
+          console.log('IP address: ', this.ip);
+          if(value.Data[2] < -1000){
+            this.switchOn = true;
+            console.log('Export power exceeds 1000w - switch on');
+          }
+          if(value.Data[2] >0){
+              this.switchOn = false;
+              console.log('Export power less than0w - switch off');
+          }
+
+        },
+        (error) => {
+          console.log('Error: ', error);
+        },
+      );
+    }, 120000);    
+
   }                                                                                      // End Class Constructor
 
   // Now define Class methods
@@ -72,6 +111,15 @@ class Meter implements AccessoryPlugin {                                        
       this.informationService,
       this.switchService,
     ];
+  }
+
+  async meterGet(){                                                   // Method meterGet - Get JSON data from Meter
+    // const url = 'http://192.168.1.123/monitorjson';
+    const response = await fetch('http://192.168.1.123/monitorjson',
+      {headers: {'Authorization': 'Basic ' + btoa('admin:admin')}});
+    const body = await response.json();
+
+    return body;
   }
 
 }
