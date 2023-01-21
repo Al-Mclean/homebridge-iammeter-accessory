@@ -29,17 +29,25 @@ class Meter implements AccessoryPlugin {                                        
   private readonly switchService: Service;
   private readonly informationService: Service;
   ip: any;
+  pollInterval: any;
+  onThreashold: any;
+  offThreashold: any;
   
 
   constructor(log: Logging, config: AccessoryConfig, api: API) {                      // Class Constructor
     this.log = log;
     this.name = config.name;
     console.log('Name: ', this.name);
-
     this.ip = config.ip;
     console.log('IP address: ', this.ip);
-
-
+    this.pollInterval = config.pollInterval;
+    console.log('Polling Interval: ', this.pollInterval);
+    this.onThreashold = config.onThreashold;
+    console.log('On Threashold: ', this.onThreashold);
+    this.offThreashold = config.offThreashold;
+    console.log('Off Threashold: ', this.offThreashold);
+    
+    
     this.switchService = new hap.Service.Switch(this.name);
 
     this.switchService.getCharacteristic(hap.Characteristic.On)
@@ -72,13 +80,13 @@ class Meter implements AccessoryPlugin {                                        
           console.log('Import Power:', value.Data[3]);
           console.log('Export Power:', value.Data[4]);
           console.log('IP address: ', this.ip);
-          if(value.Data[2] < -1000){
+          if(value.Data[2] < this.onThreashold){
             this.switchOn = true;
-            console.log('Export power exceeds 1000w - switch on');
+            console.log('Meter reading is less than ', this.onThreashold, ' - switch on');
           }
-          if(value.Data[2] >0){
+          if(value.Data[2] > this.offThreashold){
               this.switchOn = false;
-              console.log('Export power less than0w - switch off');
+              console.log('Meter reading is greater than ', this.offThreashold, '- switch off');
           }
 
         },
@@ -86,7 +94,7 @@ class Meter implements AccessoryPlugin {                                        
           console.log('Error: ', error);
         },
       );
-    }, 120000);    
+    }, this.pollInterval);    
 
   }                                                                                      // End Class Constructor
 
