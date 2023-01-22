@@ -32,6 +32,8 @@ class Meter implements AccessoryPlugin {                                        
   pollInterval: any;
   onThreashold: any;
   offThreashold: any;
+  username: any;
+  password: any;
   
 
   constructor(log: Logging, config: AccessoryConfig, api: API) {                      // Class Constructor
@@ -40,6 +42,10 @@ class Meter implements AccessoryPlugin {                                        
     console.log('Name: ', this.name);
     this.ip = config.ip;
     console.log('IP address: ', this.ip);
+    this.username = config.username;
+    console.log('Username: ', this.username);
+    this.password = config.password;
+    console.log('Password: ', this.password);
     this.pollInterval = config.pollInterval;
     console.log('Polling Interval: ', this.pollInterval);
     this.onThreashold = config.onThreashold;
@@ -47,7 +53,7 @@ class Meter implements AccessoryPlugin {                                        
     this.offThreashold = config.offThreashold;
     console.log('Off Threashold: ', this.offThreashold);
     // Config error checking
-    
+
     
 
 
