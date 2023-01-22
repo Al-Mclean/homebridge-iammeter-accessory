@@ -76,12 +76,10 @@ class Meter implements AccessoryPlugin {                                        
 
     log.info("Switch finished initializing!");
 
-      
     setInterval(() => {
       console.log('Request Energy Meter Data');
-      this.meterGet().then(
+      this.meterGet(this.ip, this.username, this.password).then(
         (value) => {
-          //console.log('Result: ', value);
           console.log('');
           console.log('Accessory Voltage:', value.Data[0]);
           console.log('Current:', value.Data[1]);
@@ -130,10 +128,12 @@ class Meter implements AccessoryPlugin {                                        
     ];
   }
 
-  async meterGet(){                                                   // Method meterGet - Get JSON data from Meter
-    // const url = 'http://192.168.1.123/monitorjson';
-    const response = await fetch('http://192.168.1.123/monitorjson',
-      {headers: {'Authorization': 'Basic ' + btoa('admin:admin')}});
+  async meterGet(ip_address: string, username: string, password: string){                                                   // Method meterGet - Get JSON data from Meter
+    const url = 'http://' + ip_address + '/monitorjson';
+    const auth = username + ':' + password;
+    console.log('Auth string: ', auth);
+    const response = await fetch(url,
+      {headers: {'Authorization': 'Basic ' + btoa(auth)}});
     const body = await response.json();
 
     return body;
