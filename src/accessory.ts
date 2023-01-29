@@ -24,7 +24,6 @@ class Meter implements AccessoryPlugin {                                        
   private readonly log: Logging;
   private readonly name: string;
   private switchOn = false;
-
   private readonly switchService: Service;
   private readonly informationService: Service;
   ip: any;
@@ -33,31 +32,32 @@ class Meter implements AccessoryPlugin {                                        
   offThreashold: any;
   username: any;
   password: any;
-  
 
-  constructor(log: Logging, config: AccessoryConfig, api: API) {                      // Class Constructor
+  constructor(log: Logging, config: AccessoryConfig, api: API) {                    // Class Constructor
     this.log = log;
     this.name = config.name;
-    console.log('Name: ', this.name);
     this.ip = config.ip;
+    this.username = config.username || 'admin';                                     // Default Value 'admin''
+    this.password = config.password || 'admin';                                     // Default Value 'admin'
+    this.pollInterval = config.pollInterval || 120;                                 // Default Value 120s
+    this.onThreashold = config.onThreashold || -2000;                               // Default Value -2000 Watts
+    this.offThreashold = config.offThreashold || 0;                                 // Default Value 0 Watts
+
+    console.log('Name: ', this.name);
     console.log('IP address: ', this.ip);
-    this.username = config.username || 'admin';
     console.log('Username: ', this.username);
-    this.password = config.password || 'admin';
     console.log('Password: ', this.password);
-    this.pollInterval = config.pollInterval || 120;
     console.log('Polling Interval: ', this.pollInterval);
-    this.onThreashold = config.onThreashold || -2000;
     console.log('On Threashold: ', this.onThreashold);
-    this.offThreashold = config.offThreashold || 0;
     console.log('Off Threashold: ', this.offThreashold);
 
     // Config error checking
     
-    if (this.onThreashold > this.offThreashold){                          // Confirm on threashold is less than off threashold 
+    if (this.onThreashold > this.offThreashold){                        // Confirm on threashold is less than off threashold 
       console.log('ERROR - On Threashold > Off Threashold')
       // Should Stop Plug-in
     }
+
     // Check for mandatory fields
 
 
@@ -97,8 +97,8 @@ class Meter implements AccessoryPlugin {                                        
             console.log('Meter reading is less than ', this.onThreashold, ' - switch on');
           }
           if(value.Data[2] > this.offThreashold){
-              this.switchOn = false;
-              console.log('Meter reading is greater than ', this.offThreashold, '- switch off');
+            this.switchOn = false;
+            console.log('Meter reading is greater than ', this.offThreashold, '- switch off');
           }
 
         },
@@ -108,7 +108,7 @@ class Meter implements AccessoryPlugin {                                        
       );
     }, this.pollInterval * 1000);    
 
-  }                                                                                      // End Class Constructor
+  }                                                                                 // End Class Constructor
 
   // Now define Class methods
 
@@ -126,7 +126,7 @@ class Meter implements AccessoryPlugin {                                        
   async meterGet(ip_address: string, username: string, password: string){          // Method meterGet - Get JSON data from Meter
     const url = 'http://' + ip_address + '/monitorjson';
     const auth = username + ':' + password;
-    console.log('Auth string: ', auth);
+    // console.log('Auth string: ', auth);
     const response = await fetch(url,
       {headers: {'Authorization': 'Basic ' + btoa(auth)}});
     const body = await response.json();
