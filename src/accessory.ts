@@ -12,7 +12,6 @@ import {
 } from 'homebridge';
 import fetch from 'node-fetch';
 
-
 let hap: HAP;
 
 export = (api: API) => {
@@ -42,19 +41,25 @@ class Meter implements AccessoryPlugin {                                        
     console.log('Name: ', this.name);
     this.ip = config.ip;
     console.log('IP address: ', this.ip);
-    this.username = config.username;
+    this.username = config.username || 'admin';
     console.log('Username: ', this.username);
-    this.password = config.password;
+    this.password = config.password || 'admin';
     console.log('Password: ', this.password);
-    this.pollInterval = config.pollInterval;
+    this.pollInterval = config.pollInterval || 120;
     console.log('Polling Interval: ', this.pollInterval);
-    this.onThreashold = config.onThreashold;
+    this.onThreashold = config.onThreashold || -2000;
     console.log('On Threashold: ', this.onThreashold);
-    this.offThreashold = config.offThreashold;
+    this.offThreashold = config.offThreashold || 0;
     console.log('Off Threashold: ', this.offThreashold);
-    // Config error checking
 
+    // Config error checking
     
+    if (this.onThreashold > this.offThreashold){                          // Confirm on threashold is less than off threashold 
+      console.log('ERROR - On Threashold > Off Threashold')
+      // Should Stop Plug-in
+    }
+    // Check for mandatory fields
+
 
 
     this.switchService = new hap.Service.Switch(this.name);
@@ -107,20 +112,10 @@ class Meter implements AccessoryPlugin {                                        
 
   // Now define Class methods
 
-  /*
-   * This method is optional to implement. It is called when HomeKit ask to identify the accessory.
-   * Typical this only ever happens at the pairing process.
-   */
-
-
   identify(): void {
     this.log("Identify!");
   }
 
-  /*
-   * This method is called directly after creation of this instance.
-   * It should return all services which should be added to the accessory.
-   */
   getServices(): Service[] {
     return [
       this.informationService,
@@ -128,7 +123,7 @@ class Meter implements AccessoryPlugin {                                        
     ];
   }
 
-  async meterGet(ip_address: string, username: string, password: string){                                                   // Method meterGet - Get JSON data from Meter
+  async meterGet(ip_address: string, username: string, password: string){          // Method meterGet - Get JSON data from Meter
     const url = 'http://' + ip_address + '/monitorjson';
     const auth = username + ':' + password;
     console.log('Auth string: ', auth);
