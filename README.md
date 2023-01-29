@@ -44,7 +44,22 @@ edit your Homebridge's config.json to include the following in the accessories s
 ]
 ```
 
-* "name"              			The Homekit Accessory Name.
+
+### Core
+| Key | Description | Default |
+| --- | --- | --- |
+| `accessory` | Must be `Meter` | N/A |
+| `name` | Name to appear in the Home app | N/A |
+| `ip` | The IP address of the Meter | N/A |
+
+### Optional fields
+| Key | Description | Default |
+| --- | --- | --- |
+| `username` | The username required to log in to the Meter | `admin` |
+| `password` | The password required to log in to the meter | `admin` |
+| `pollInterval` | Time (in seconds) between device polls | `120` |
+| `onThreashold` | The power value at which the Meter output will turn on (generally negative)| `-2000`|
+| `offThreashold` | The power value at which the Meter output will turn off | `0` |
 
 
 ## Output 
