@@ -16,7 +16,9 @@ This project will initially focus on only the single phase meter.
 
 ## About
 
-Work in Progress
+This project provides an output via a virtual light bulb which is configured to come on at a set export level (onThreashold) and turn off when the output drops to a set level (offThreshold). To avoid rapid on/off cycling of devices, the on thread hold should exceed the off thread hold by the usage of any automated devices. A large polling interval is also recommended (default 120 seconds) to further avoid cycling. 
+
+This project has now achieved MVP for the single phase meter and is released for user evaluation. Feedback will be warmly welcomed.
 
 ## Install Development Dependencies
 
