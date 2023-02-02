@@ -8,7 +8,9 @@
 
 # IAMMeter HomeBridge Plug-in
 
-IAMMeter provide single and three phase power meters which are bi-directional (i.e. capable of measuring both forward / Grid and reverse/ export power). These devices are suited to monitoring power consumption and export for sites equiped with grid connected solar systems.
+The focus of this plug-in is to make the HomeKit environment aware of when a household equiped with power generation (typically a solar system), is exporting power. This will allow the construction of automations which can take advantage of the excess power (e.g. running heating or cooling systems, hot water systems, and clothes dryers).
+
+This plug-in is designed to interface with a Iammeter power meter. IAMMeter provide single and three phase power meters which are bi-directional (i.e. capable of measuring both forward / Grid and reverse/ export power). These devices are suited to monitoring power consumption and export for sites equiped with grid connected solar systems.
 
 This project will initially focus on only the single phase meter.
 
@@ -64,6 +66,6 @@ edit your Homebridge's config.json to include the following in the accessories s
 
 ## Output 
 
-I am currently toying with several ideas in this space. Similar implimentations have used various parameters such as volume and brightness to act as a proxy for power which is currently unsupported in HomeKit. From a functional point of view, I expect the likely use case to be something like "when export power exceeds x, then turn on device Y". Thus some simple virtual indicator (lamp etc) with a pre-defined "on" value may be the most useful way to impliment the functionallity.
+I am currently toying with several ideas in this space. Similar implimentations have used various parameters such as volume and brightness to act as a proxy for power which is currently unsupported in HomeKit. From a functional point of view, I expect the likely use case to be something like "when export power exceeds x, then turn on device Y". Thus I have implimented a simple virtual indicator (lamp) with a pre-defined "on" value as the most useful way to impliment the functionallity.
 
 
