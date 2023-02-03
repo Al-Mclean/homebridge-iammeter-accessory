@@ -18,8 +18,9 @@ This project has now achieved MVP for the single phase meter and is released for
 
 ## Install Development Dependencies
 
-TBA
+To install this plug-in via the HomeBridge GUI, simply search for "IAMMeter" within the plug-in search and then install the package "homebridge-iaameter-accessory" from the list.
 
+For Manual install, enter the below command into the system terminal
 ```
 npm install homebridge-iammeter-accessory
 ```
