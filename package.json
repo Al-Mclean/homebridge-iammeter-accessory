@@ -22,7 +22,8 @@
     "meter",
     "solar",
     "export",
-    "solar-energy"
+    "solar-energy",
+    "homekit"
   ],
   "license": "ISC",
   "files": [
