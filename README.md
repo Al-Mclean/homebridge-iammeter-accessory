@@ -21,7 +21,7 @@ This project has now achieved MVP for the single phase meter and is released for
 TBA
 
 ```
-npm install
+npm install homebridge-iammeter-accessory
 ```
 
 
