@@ -4,6 +4,7 @@
 <img src="https://github.com/homebridge/branding/raw/master/logos/homebridge-wordmark-logo-vertical.png" width="150">
 
 </p>
+
 # IAMMeter HomeBridge Plug-in
 
 The aim of this plug-in is to make the HomeKit environment aware of when a household equiped with power generation (typically a solar system), is exporting power. This will allow the construction of automations which can take advantage of the excess power (e.g. running heating or cooling systems, hot water systems, and clothes dryers).
