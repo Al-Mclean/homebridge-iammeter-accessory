@@ -16,7 +16,13 @@
     "homebridge": ">=1.0.0"
   },
   "keywords": [
-    "homebridge-plugin"
+    "homebridge-plugin",
+    "homebridge",
+    "power",
+    "meter",
+    "solar",
+    "export",
+    "solar-energy"
   ],
   "license": "ISC",
   "files": [
