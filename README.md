@@ -71,11 +71,11 @@ I am currently toying with several ideas in this space. Similar implimentations 
 ## Justification
 
 In many areas of the world exported solar energy is readily consumed by the grid and offers financial incentives to the exporter. However, some area's, such as my home state South Australia, have now reached very high levels of solar generation and are producing excess available power. In these area's it is now more benificial for both the owner and environment to utilise this excess power to avoid the use of fossil fuel based energy sources when the sun is not shining. This is the impitus for building this plug-in. An "export aware" smart home could inteligentily utilise this power to:
-        - Pre-heat or cool the house
-        - Charge an electric vehicle
-        - Operate a clothes dryer
-        - Run an electric hot water heater
-        - Charge batteries and battery operated devices
+ - Pre-heat or cool the house
+ - Charge an electric vehicle
+ - Operate a clothes dryer
+ - Run an electric hot water heater
+ - Charge batteries and battery operated devices
         
 Hopfully this plug-in will be useful to members of the Homebridge Community and will increase in uptake as the penetration of embedded solar generation increases.
 
