@@ -4,9 +4,9 @@
 
 # IAMMeter HomeBridge Plug-in
 
-The aim of this plug-in is to make the HomeKit environment aware of when a household equiped with power generation (typically a solar system), is exporting power. This will allow the construction of automations which can take advantage of the excess power (e.g. running heating or cooling systems, hot water systems, and clothes dryers).
+The aim of this plug-in is to make the HomeKit environment aware of when a household equipped with power generation (typically a solar system), is exporting power. This will allow the construction of automations which can take advantage of the excess power (e.g. running heating or cooling systems, hot water systems, and clothes dryers).
 
-This plug-in is designed to interface with a Iammeter power meter. IAMMeter provide single and three phase power meters which are bi-directional (i.e. capable of measuring both forward / Grid and reverse/ export power). These devices are suited to monitoring power consumption and export for sites equiped with grid connected solar systems.
+This plug-in is designed to interface with a Iammeter power meter. IAMMeter provide single and three phase power meters which are bi-directional (i.e. capable of measuring both forward / Grid and reverse/ export power). These devices are suited to monitoring power consumption and export for sites equipped with grid connected solar systems.
 
 This project will initially focus on only the single phase meter.
 
@@ -65,19 +65,19 @@ edit your Homebridge's config.json to include the following in the accessories s
 
 ## Output 
 
-I am currently toying with several ideas in this space. Similar implimentations have used various parameters such as volume and brightness to act as a proxy for power which is currently unsupported in HomeKit. From a functional point of view, I expect the likely use case to be something like "when export power exceeds x, then turn on device Y". Thus I have implimented a simple virtual indicator (lamp) with a pre-defined "on" value as the most useful way to impliment the functionallity.
+I am currently toying with several ideas in this space. Similar implementations have used various parameters such as volume and brightness to act as a proxy for power which is currently unsupported in HomeKit. From a functional point of view, I expect the likely use case to be something like "when export power exceeds x, then turn on device Y". Thus I have implemented a simple virtual indicator (lamp) with a pre-defined "on" value as the most useful way to implement the functionality.
 
 
 ## Justification
 
-In many areas of the world exported solar energy is readily consumed by the grid and offers financial incentives to the exporter. However, some area's, such as my home state South Australia, have now reached very high levels of solar generation and are producing excess available power. In these area's it is now more benificial for both the owner and environment to utilise this excess power to avoid the use of fossil fuel based energy sources when the sun is not shining. This is the impitus for building this plug-in. An "export aware" smart home could inteligentily utilise this power to:
+In many areas of the world exported solar energy is readily consumed by the grid and offers financial incentives to the exporter. However, some area's, such as my home state South Australia, have now reached very high levels of solar generation and are producing excess available power. In these area's it is now more beneficial for both the owner and environment to utilise this excess power to avoid the use of fossil fuel based energy sources when the sun is not shining. This is the impitus for building this plug-in. An "export aware" smart home could intelligently utilise this power to:
  - Pre-heat or cool the house
  - Charge an electric vehicle
  - Operate a clothes dryer
  - Run an electric hot water heater
  - Charge batteries and battery operated devices
         
-Hopfully this plug-in will be useful to members of the Homebridge Community and will increase in uptake as the penetration of embedded solar generation increases.
+Hopefully this plug-in will be useful to members of the Homebridge Community and will increase in uptake as the penetration of embedded solar generation increases.
 
 
 ## Acknowledgements:
