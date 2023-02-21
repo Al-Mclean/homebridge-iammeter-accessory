@@ -6,7 +6,7 @@
 
 The aim of this plug-in is to make the HomeKit environment aware of when a household equipped with power generation (typically a solar system), is exporting power. This will allow the construction of automations which can take advantage of the excess power (e.g. running heating or cooling systems, hot water systems, and clothes dryers).
 
-This plug-in is designed to interface with a Iammeter power meter. IAMMeter provide single and three phase power meters which are bi-directional (i.e. capable of measuring both forward / Grid and reverse/ export power). These devices are suited to monitoring power consumption and export for sites equipped with grid connected solar systems.
+This plug-in utilises the HomeBridge system, and is designed to interface with a Iammeter power meter. IAMMeter provide single and three phase power meters which are bi-directional (i.e. capable of measuring both forward / Grid and reverse/ export power). These devices are suited to monitoring power consumption and export for sites equipped with grid connected solar systems.
 
 This project will initially focus on only the single phase meter.
 
